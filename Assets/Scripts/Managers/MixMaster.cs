@@ -54,6 +54,7 @@ public class MixMaster : Singleton<MixMaster>
         timeRemaining = time;
     }
 
+    #region Getters and Setters
     public void SetIsInGoodZone()
     {
         isInTheGoodZone = true;
@@ -73,6 +74,7 @@ public class MixMaster : Singleton<MixMaster>
     {
         isInTheBadZone = false;
     }
+    #endregion
 
     void Explode()
     {
@@ -84,3 +86,4 @@ public class MixMaster : Singleton<MixMaster>
         Debug.Log("DONE");
     }
 }
+

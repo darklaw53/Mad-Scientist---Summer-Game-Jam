@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Draggable
   - ShakeNeedle
+  - ingredientRack
   layers:
   - Default
   - TransparentFX
