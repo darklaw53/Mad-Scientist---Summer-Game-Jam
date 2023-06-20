@@ -25,7 +25,7 @@ public class ShopItem : MonoBehaviour
     {
         if (ing.ingredientPrice < ScoreManager.Instance.score && !rack.full)
         {
-            ScoreManager.Instance.score -= int.Parse(price.text);
+            ScoreManager.Instance.score -= ing.ingredientPrice;
             rack.TakeItem(ing);
         }
     }

@@ -17,17 +17,17 @@ public class ItemRack : MonoBehaviour
 
     public void TakeItem(Ingredient newIng)
     {
-        for (int i = 0; i < GetComponentsInChildren<InventorySlot>().Length + 1; i++)
+        for (int i = 0; i < GetComponentsInChildren<InventorySlot>().Length; i++)
         {
-            if (rack[i].ing != null)
+            if (rack[i].ing == null)
             {
-                rack[i].ing = newIng;
-                break;
-            }
+                rack[i].RecieveItem(newIng);
 
-            if (rack[i] == rack[rack.Count] && rack[i].ing != null)
-            {
-                full = true;
+                if (i == GetComponentsInChildren<InventorySlot>().Length -1)
+                {
+                    full = true;
+                }
+                break;
             }
         }
     }

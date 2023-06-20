@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f7f2a1c7d17354c9dcd18b2b877a3d, type: 3}
   m_Name: IngredientExample1
   m_EditorClassIdentifier: 
-  ingredientName: 
-  ingredientPrice: 0
-  sprite: {fileID: 0}
+  ingredientName: Example1
+  ingredientPrice: 12
+  sprite: {fileID: 21300000, guid: 3b4e88f5705085042a95960cdcef2561, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
