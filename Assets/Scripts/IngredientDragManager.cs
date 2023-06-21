@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public class IngredientDragManager : Singleton<IngredientDragManager>
 {
     public Ingredient _ingredientInQuestion;
-    public InventorySlot _inventorySlotInQuestion, mixingSlot;
+    public InventorySlot _inventorySlotInQuestion, mixingSlot, oldMixSlot;
     public GameObject avatarTemplate, worldCanvas;
     public ItemRack ingredientRack;
     public bool avatarIncarnated;
     public bool hoverinOverSlot;
     GameObject avatar;
+
+    public GameObject formulaRackOBJ;
+    public GameObject ingredientRackOBJ;
+    public GameObject objectRackOBJ;
 
     private void Update()
     {
@@ -26,7 +30,7 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
                 Destroy(avatar);
                 avatarIncarnated = false;
 
-                if (hoverinOverSlot & mixingSlot.ing != null)
+                if (hoverinOverSlot && mixingSlot != null && mixingSlot.ing == null)
                 {
                     mixingSlot.RecieveItem(_ingredientInQuestion);
                     _inventorySlotInQuestion.ing = null;
@@ -37,7 +41,12 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
                 }
                 else
                 {
+                    formulaRackOBJ.SetActive(false);
+                    ingredientRackOBJ.SetActive(true);
+                    objectRackOBJ.SetActive(false);
                     ingredientRack.TakeItem(_ingredientInQuestion);
+                    oldMixSlot.ing = null;
+                    oldMixSlot = null;
                 }
 
                 _ingredientInQuestion = null;
@@ -49,7 +58,15 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
     public void DragItem(Ingredient ing, InventorySlot slot, bool isMixSlot)
     {
         _ingredientInQuestion = ing;
-        if (!isMixSlot) _inventorySlotInQuestion = slot;
+
+        if (!isMixSlot)
+        {
+            _inventorySlotInQuestion = slot;
+        }
+        else
+        {
+            oldMixSlot = slot;
+        }
 
         avatar = Instantiate(avatarTemplate, worldCanvas.transform);
         avatar.GetComponent<Image>().sprite = _ingredientInQuestion.sprite;

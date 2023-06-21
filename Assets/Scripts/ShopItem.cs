@@ -12,6 +12,10 @@ public class ShopItem : MonoBehaviour
     public TextMeshProUGUI ItemName;
     ItemRack rack;
 
+    public GameObject formulaRackOBJ;
+    public GameObject ingredientRackOBJ;
+    public GameObject objectRackOBJ;
+
     private void Awake()
     {
         image.sprite = ing.sprite;
@@ -25,6 +29,10 @@ public class ShopItem : MonoBehaviour
     {
         if (ing.ingredientPrice < ScoreManager.Instance.score && !rack.full)
         {
+            formulaRackOBJ.SetActive(false);
+            ingredientRackOBJ.SetActive(true);
+            objectRackOBJ.SetActive(false);
+
             ScoreManager.Instance.score -= ing.ingredientPrice;
             rack.TakeItem(ing);
         }
