@@ -11,7 +11,9 @@ public class ItemRack : MonoBehaviour
     {
         for (int i =0; i < GetComponentsInChildren<InventorySlot>().Length; i++)
         {
-            rack.Add(i, gameObject.transform.GetChild(i).GetComponent<InventorySlot>());
+            var x = gameObject.transform.GetChild(i).GetComponent<InventorySlot>();
+            x.numberIndex = i;
+            rack.Add(i, x);
         }
     }
 
@@ -39,6 +41,23 @@ public class ItemRack : MonoBehaviour
             if (rack[i].formul == null)
             {
                 rack[i].RecieveItem(newFormula);
+
+                if (i == GetComponentsInChildren<InventorySlot>().Length -1)
+                {
+                    full = true;
+                }
+                break;
+            }
+        }
+    }
+
+    public void TakeItem(MeltObject newObject)
+    {
+        for (int i = 0; i < GetComponentsInChildren<InventorySlot>().Length; i++)
+        {
+            if (rack[i].meltObj == null)
+            {
+                rack[i].RecieveItem(newObject);
 
                 if (i == GetComponentsInChildren<InventorySlot>().Length -1)
                 {

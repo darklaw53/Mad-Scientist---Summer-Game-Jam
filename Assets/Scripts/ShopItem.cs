@@ -22,7 +22,7 @@ public class ShopItem : MonoBehaviour
         price.text = "$" + ing.ingredientPrice + ".00";
         ItemName.text = ing.name;
 
-        rack = GameObject.FindWithTag("ingredientRack").GetComponent<ItemRack>();
+        rack = IngredientDragManager.Instance.ingredientRack;
     }
 
     public void BuyItem()

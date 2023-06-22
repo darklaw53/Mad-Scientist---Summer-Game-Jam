@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PosHandler : MonoBehaviour
+public class PosHandler : Singleton<PosHandler>
 {
     bool isAtMix, isAtShop, isAtMelt;
     public Transform mixPos, shopPos, meltPos;

@@ -6,4 +6,5 @@ public class Formula : ScriptableObject
     public string formulaName;
     public Ingredient ingredient1, ingredient2;
     public Sprite sprite;
+    public int potency;
 }

@@ -6,11 +6,18 @@ using UnityEngine.UI;
 public class IngredientDragManager : Singleton<IngredientDragManager>
 {
     public Ingredient _ingredientInQuestion;
+    public Formula _formulaInQuestion;
+    public MeltObject _meltObjectInQuestion;
+
     public InventorySlot _inventorySlotInQuestion, mixingSlot, oldMixSlot;
     public GameObject avatarTemplate, worldCanvas;
     public ItemRack ingredientRack;
+    public ItemRack formulaRack;
+    public ItemRack objectRack;
     public bool avatarIncarnated;
     public bool hoverinOverSlot;
+    public bool hoverinOverMeltZone;
+    public MeltObjectScript hoverinOverMeltObject;
     GameObject avatar;
 
     public GameObject formulaRackOBJ;
@@ -30,21 +37,56 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
                 Destroy(avatar);
                 avatarIncarnated = false;
 
-                if (hoverinOverSlot && mixingSlot != null && mixingSlot.ing == null)
+                if (hoverinOverSlot && mixingSlot != null && mixingSlot.ing == null && _ingredientInQuestion != null)
                 {
                     mixingSlot.RecieveItem(_ingredientInQuestion);
+                    _ingredientInQuestion = null;
                     _inventorySlotInQuestion.ing = null;
+                }
+                else if (hoverinOverMeltZone && _meltObjectInQuestion != null)
+                {
+                    var x = Instantiate(_meltObjectInQuestion.corpusDArt, mousePosition, transform.rotation);
+                    x.GetComponent<MeltObjectScript>().slot = _inventorySlotInQuestion;
+                    _meltObjectInQuestion = null;
+                    _inventorySlotInQuestion.meltObj = null;
+                }
+                else if (hoverinOverMeltObject != null && _formulaInQuestion)
+                {
+                    hoverinOverMeltObject.RecieveFormula(_formulaInQuestion);
+                    _formulaInQuestion = null;
+                    _inventorySlotInQuestion.formul = null;
                 }
                 else if (_inventorySlotInQuestion != null)
                 {
-                    _inventorySlotInQuestion.RecieveItem(_ingredientInQuestion);
+                    if (_ingredientInQuestion)
+                    {
+                        _inventorySlotInQuestion.RecieveItem(_ingredientInQuestion);
+                    }
+                    else if (_formulaInQuestion)
+                    {
+                        _inventorySlotInQuestion.RecieveItem(_formulaInQuestion);
+                    }
+                    else if (_meltObjectInQuestion)
+                    {
+                        _inventorySlotInQuestion.RecieveItem(_meltObjectInQuestion);
+                    }
                 }
                 else
                 {
-                    formulaRackOBJ.SetActive(false);
-                    ingredientRackOBJ.SetActive(true);
-                    objectRackOBJ.SetActive(false);
-                    ingredientRack.TakeItem(_ingredientInQuestion);
+                    if (_ingredientInQuestion)
+                    {
+                        formulaRackOBJ.SetActive(false);
+                        ingredientRackOBJ.SetActive(true);
+                        objectRackOBJ.SetActive(false);
+                        ingredientRack.TakeItem(_ingredientInQuestion);
+                    }
+                    else if (_meltObjectInQuestion)
+                    {
+                        formulaRackOBJ.SetActive(false);
+                        ingredientRackOBJ.SetActive(false);
+                        objectRackOBJ.SetActive(true);
+                        objectRack.TakeItem(_meltObjectInQuestion);
+                    }
                     oldMixSlot.ing = null;
                     oldMixSlot = null;
                 }
@@ -70,6 +112,26 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
 
         avatar = Instantiate(avatarTemplate, worldCanvas.transform);
         avatar.GetComponent<Image>().sprite = _ingredientInQuestion.sprite;
+        avatarIncarnated = true;
+    }
+
+    public void DragItem(Formula formul, InventorySlot slot)
+    {
+        _formulaInQuestion = formul;
+        _inventorySlotInQuestion = slot;
+
+        avatar = Instantiate(avatarTemplate, worldCanvas.transform);
+        avatar.GetComponent<Image>().sprite = _formulaInQuestion.sprite;
+        avatarIncarnated = true;
+    }
+
+    public void DragItem(MeltObject meltObj, InventorySlot slot)
+    {
+        _meltObjectInQuestion = meltObj;
+        _inventorySlotInQuestion = slot;
+
+        avatar = Instantiate(avatarTemplate, worldCanvas.transform);
+        avatar.GetComponent<Image>().sprite = _meltObjectInQuestion.sprite;
         avatarIncarnated = true;
     }
 }
