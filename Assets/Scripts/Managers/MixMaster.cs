@@ -22,6 +22,8 @@ public class MixMaster : Singleton<MixMaster>
 
     Color defaultColor;
 
+    public GameObject explosion;
+
     private void Start()
     {
         defaultColor = tubeFluid.color;
@@ -119,7 +121,13 @@ public class MixMaster : Singleton<MixMaster>
 
     void Explode()
     {
-        Debug.Log("BOOM");
+        Instantiate(explosion, IngredientDragManager.Instance.worldCanvas.transform);
+        mixSlot1.image.sprite = null;
+        mixSlot2.image.sprite = null;
+        mixSlot1.image.color = new Vector4(mixSlot1.image.color.r, mixSlot1.image.color.g, mixSlot1.image.color.b, 0);
+        mixSlot2.image.color = new Vector4(mixSlot2.image.color.r, mixSlot2.image.color.g, mixSlot2.image.color.b, 0);
+        mixSlot1.ing = null;
+        mixSlot2.ing = null;
     }
 
     void FinishMix()
