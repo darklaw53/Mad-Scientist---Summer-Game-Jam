@@ -9,4 +9,5 @@ public class MeltObject : ScriptableObject
     public int meltResistance;
     public Sprite sprite;
     public GameObject corpusDArt;
+    public int reward;
 }

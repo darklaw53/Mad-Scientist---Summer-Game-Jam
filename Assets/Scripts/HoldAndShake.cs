@@ -19,9 +19,14 @@ public class HoldAndShake : Singleton<HoldAndShake>
     {
         if (Input.GetMouseButtonUp(0) && shaking)
         {
-            shaking = false;
-            shakeButton.SetActive(true);
-            shakeBar.SetActive(false);
+            StopShaking();
         }
+    }
+
+    public void StopShaking()
+    {
+        shaking = false;
+        shakeButton.SetActive(true);
+        shakeBar.SetActive(false);
     }
 }

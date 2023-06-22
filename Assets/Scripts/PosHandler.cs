@@ -15,7 +15,7 @@ public class PosHandler : Singleton<PosHandler>
 
     private void Start()
     {
-        charCamDif = character.transform.position - cam.transform.position;
+        charCamDif = character.transform.position - mixPos.position;
         isAtMix = true;
     }
 
@@ -78,6 +78,7 @@ public class PosHandler : Singleton<PosHandler>
             yield return null;
         }
         cam.transform.position = targetPosition;
+        character.transform.position = targetPosition + charCamDif;
         if (isAtMix)
         {
             shop.SetActive(false);

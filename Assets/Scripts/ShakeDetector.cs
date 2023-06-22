@@ -13,6 +13,17 @@ public class ShakeDetector : Singleton<ShakeDetector>
 
     public Slider slider;
 
+    public float vibrateSpeed = 5;
+    public float vibrateIntensity = .1f;
+    public GameObject potionVial;
+
+    Vector3 vialStartPos;
+
+    private void Start()
+    {
+        vialStartPos = potionVial.transform.localPosition;
+    }
+
     void Update()
     {
         mouseSpeed = Mathf.Sqrt((Input.GetAxis("Mouse X") * Input.GetAxis("Mouse X")) + (Input.GetAxis("Mouse Y") * Input.GetAxis("Mouse Y")));
@@ -37,5 +48,13 @@ public class ShakeDetector : Singleton<ShakeDetector>
         }
 
         slider.value = barValue;
+
+        if (HoldAndShake.Instance.shaking)
+        {
+            potionVial.transform.localPosition = vibrateIntensity * new Vector3(
+                vialStartPos.x + Mathf.PerlinNoise(mouseSpeed * Time.time, 1),
+                vialStartPos.y + Mathf.PerlinNoise(mouseSpeed * Time.time, 2),
+                vialStartPos.z + Mathf.PerlinNoise(mouseSpeed * Time.time, 3));
+        }
     }
 }

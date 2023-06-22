@@ -55,6 +55,10 @@ public class MeltObjectScript : MonoBehaviour
         IngredientDragManager.Instance.ingredientRackOBJ.SetActive(false);
         IngredientDragManager.Instance.objectRackOBJ.SetActive(true);
         slot.RecieveItem(meltObj);
+
+        IngredientDragManager.Instance.objectRack.rack[slot.numberIndex + 1].lockIcon.SetActive(false);
+        ScoreManager.Instance.score += meltObj.reward;
+
         Destroy(gameObject);
     }
 

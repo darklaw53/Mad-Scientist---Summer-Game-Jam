@@ -95,6 +95,7 @@ public class MixMaster : Singleton<MixMaster>
         finished = false;
         timeRemaining = time;
         maxTime = time;
+        progressCircle.fillAmount = 0;
     }
 
     #region Getters and Setters
@@ -128,6 +129,8 @@ public class MixMaster : Singleton<MixMaster>
         mixSlot2.image.color = new Vector4(mixSlot2.image.color.r, mixSlot2.image.color.g, mixSlot2.image.color.b, 0);
         mixSlot1.ing = null;
         mixSlot2.ing = null;
+
+        HoldAndShake.Instance.StopShaking();
     }
 
     void FinishMix()
@@ -139,6 +142,8 @@ public class MixMaster : Singleton<MixMaster>
         mixSlot2.image.color = new Vector4(mixSlot2.image.color.r, mixSlot2.image.color.g, mixSlot2.image.color.b, 0);
         mixSlot1.ing = null;
         mixSlot2.ing = null;
+
+        HoldAndShake.Instance.StopShaking();
     }
 }
 

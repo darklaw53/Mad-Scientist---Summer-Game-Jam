@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemRack : MonoBehaviour
 {
-    Dictionary<int, InventorySlot> rack = new Dictionary<int, InventorySlot>();
+    public Dictionary<int, InventorySlot> rack = new Dictionary<int, InventorySlot>();
     public bool full;
 
     private void Awake()
