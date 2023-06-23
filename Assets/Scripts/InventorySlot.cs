@@ -26,7 +26,7 @@ public class InventorySlot : MonoBehaviour
         if (meltObj != null)
         {
             image.sprite = meltObj.sprite;
-            image.color = new Vector4(image.color.r, image.color.g, image.color.b, 100);
+            image.color = meltObj.bonusColor;
         }
     }
 
@@ -48,7 +48,7 @@ public class InventorySlot : MonoBehaviour
     {
         meltObj = mletObjj;
         image.sprite = meltObj.sprite;
-        image.color = new Vector4(image.color.r, image.color.g, image.color.b, 100);
+        image.color = meltObj.bonusColor;
     }
 
     private void OnMouseDown()

@@ -9,7 +9,7 @@ public class ShakeDetector : Singleton<ShakeDetector>
     public float maxSpeed = 0;
     public float barDegradeAmount = 1;
 
-    float barValue = 0;
+    public float barValue = 0;
 
     public Slider slider;
 
@@ -24,7 +24,7 @@ public class ShakeDetector : Singleton<ShakeDetector>
         vialStartPos = potionVial.transform.localPosition;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         mouseSpeed = Mathf.Sqrt((Input.GetAxis("Mouse X") * Input.GetAxis("Mouse X")) + (Input.GetAxis("Mouse Y") * Input.GetAxis("Mouse Y")));
         /*

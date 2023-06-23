@@ -10,4 +10,5 @@ public class MeltObject : ScriptableObject
     public Sprite sprite;
     public GameObject corpusDArt;
     public int reward;
+    public Color bonusColor;
 }

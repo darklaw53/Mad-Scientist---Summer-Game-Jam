@@ -10,6 +10,8 @@ public class HoldAndShake : Singleton<HoldAndShake>
     private void OnMouseDown()
     {
         shaking = true;
+        ShakeDetector.Instance.barValue = 0;
+        ShakeDetector.Instance.slider.value = 0;
         shakeButton.SetActive(false);
         shakeBar.SetActive(true);
         MixMaster.Instance.ResetTimer(1);

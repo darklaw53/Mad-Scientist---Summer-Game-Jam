@@ -26,6 +26,8 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
 
     public GameObject soundEffect;
 
+    public Transform canvas;
+
     private void Update()
     {
         if (avatarIncarnated)
@@ -48,7 +50,7 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
                 }
                 else if (hoverinOverMeltZone && _meltObjectInQuestion != null)
                 {
-                    var x = Instantiate(_meltObjectInQuestion.corpusDArt, mousePosition, transform.rotation);
+                    var x = Instantiate(_meltObjectInQuestion.corpusDArt, mousePosition, transform.rotation, canvas);
                     x.GetComponent<MeltObjectScript>().slot = _inventorySlotInQuestion;
                     _meltObjectInQuestion = null;
                     _inventorySlotInQuestion.meltObj = null;

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeltObjectScript : MonoBehaviour
 {
-    public bool melting;
+    public bool melting = false;
     public MeltObject meltObj;
     public InventorySlot slot;
     public Formula formulaInProcess;
@@ -12,9 +13,10 @@ public class MeltObjectScript : MonoBehaviour
     public GameObject particleEffect,particleEffect2;
     public ParticleSystem acidEffect,vapourEffect;
 
-    public SpriteRenderer meltyPart;
+    public Image meltyPart;
 
     public SpriteRenderer thisBody;
+    public GameObject meltPoof;
 
     private void OnMouseDown()
     {
@@ -41,11 +43,11 @@ public class MeltObjectScript : MonoBehaviour
         {
             melting = true;
             particleEffect2.SetActive(true);
-            var main2 = acidEffect.main;
+            var main2 = vapourEffect.main;
             main2.startColor = x;
         }
         StartCoroutine(ChangeColor(melting, x));
-        StartCoroutine(ProcessingAcid(melting));
+        StartCoroutine(ProcessingAcid(melting, formul));
     }
 
     IEnumerator ChangeColor(bool startedMelting, Color colorFraction)
@@ -57,7 +59,7 @@ public class MeltObjectScript : MonoBehaviour
         }
     }
 
-    IEnumerator ProcessingAcid(bool startedMelting)
+    IEnumerator ProcessingAcid(bool startedMelting, Formula formul)
     {
         yield return new WaitForSeconds(5);
         if (!startedMelting & !melting)
@@ -66,11 +68,11 @@ public class MeltObjectScript : MonoBehaviour
         }
         else if (startedMelting)
         {
-            SucessfulMelt();
+            SucessfulMelt(formul);
         }
     }
 
-    void SucessfulMelt()
+    void SucessfulMelt(Formula formul)
     {
         IngredientDragManager.Instance.formulaRackOBJ.SetActive(false);
         IngredientDragManager.Instance.ingredientRackOBJ.SetActive(false);
@@ -80,6 +82,10 @@ public class MeltObjectScript : MonoBehaviour
         IngredientDragManager.Instance.objectRack.rack[slot.numberIndex + 1].lockIcon.SetActive(false);
         ScoreManager.Instance.score += meltObj.reward;
 
+        var p = Instantiate(meltPoof, transform.position, transform.rotation);
+        var b = p.GetComponent<ParticleSystem>().main;
+        p.transform.position = transform.position;
+        b.startColor = new Color((formul.ingredient1.color.r + formul.ingredient2.color.r) / 2, (formul.ingredient1.color.g + formul.ingredient2.color.g) / 2, (formul.ingredient1.color.b + formul.ingredient2.color.b) / 2, (formul.ingredient1.color.a + formul.ingredient2.color.a) / 2);
         Destroy(gameObject);
     }
 

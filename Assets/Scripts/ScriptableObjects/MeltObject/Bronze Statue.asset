@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b135b23032fb514e9b1d36416558887, type: 3}
-  m_Name: Safe
+  m_Name: Bronze Statue
   m_EditorClassIdentifier: 
-  materialName: Safe
-  meltResistance: 4
-  sprite: {fileID: 21300000, guid: 8dd4b5d8ad7953e468725eaeb19af32e, type: 3}
-  corpusDArt: {fileID: 3873182349940313571, guid: ce5c1c7356cab2a4fb081568133dfc8a, type: 3}
-  reward: 10000
-  bonusColor: {r: 1, g: 1, b: 1, a: 1}
+  materialName: Bronze Statue
+  meltResistance: 3
+  sprite: {fileID: 21300000, guid: d0bb8c598a062784ba957c19b80910e5, type: 3}
+  corpusDArt: {fileID: 2121501669808559168, guid: 6185ccb587eb54042a6a4d824362f31c, type: 3}
+  reward: 40
+  bonusColor: {r: 1, g: 0.43529412, b: 0, a: 1}

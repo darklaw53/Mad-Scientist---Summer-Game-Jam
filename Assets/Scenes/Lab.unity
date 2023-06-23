@@ -2609,7 +2609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 940542443}
-  score: 10000
+  score: 0
 --- !u!4 &1079565963
 Transform:
   m_ObjectHideFlags: 0
@@ -3419,6 +3419,7 @@ MonoBehaviour:
   ingredientRackOBJ: {fileID: 2037571031}
   objectRackOBJ: {fileID: 125288632}
   soundEffect: {fileID: 8757260947956999114, guid: 712fed6fd847ac842a96f15735f1938f, type: 3}
+  canvas: {fileID: 1676303802}
 --- !u!4 &1183906077
 Transform:
   m_ObjectHideFlags: 0
@@ -6884,6 +6885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0
   barDegradeAmount: 0.5
+  barValue: 0
   slider: {fileID: 495731522}
   vibrateSpeed: 5
   vibrateIntensity: 0.5
@@ -6942,6 +6944,7 @@ MonoBehaviour:
   formulaRackOBJ: {fileID: 1853230565}
   ingredientRackOBJ: {fileID: 2037571031}
   objectRackOBJ: {fileID: 125288632}
+  failFormula: {fileID: 11400000, guid: 0917dc763978d0d4c9643cb8d5e19bc8, type: 2}
 --- !u!1 &1911890203
 GameObject:
   m_ObjectHideFlags: 0
@@ -8765,7 +8768,7 @@ PrefabInstance:
     - target: {fileID: 386654382319573220, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
       propertyPath: meltObj
       value: 
-      objectReference: {fileID: 11400000, guid: 6733a34849bdfba4dbaed541cc67dd40, type: 2}
+      objectReference: {fileID: 11400000, guid: 2dc56432390778843899874aaba78c1d, type: 2}
     - target: {fileID: 386654382319573220, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
       propertyPath: isObjectSlot
       value: 1
@@ -8947,9 +8950,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5884390090104119137, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
+      propertyPath: meltObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 6733a34849bdfba4dbaed541cc67dd40, type: 2}
+    - target: {fileID: 5884390090104119137, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
       propertyPath: isObjectSlot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5884390090221272271, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
+      propertyPath: meltObj
+      value: 
+      objectReference: {fileID: 11400000, guid: e7fd11a9eaba0c14ba58ab0ec7cbde60, type: 2}
     - target: {fileID: 5884390090221272271, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
       propertyPath: isObjectSlot
       value: 1
@@ -8961,11 +8972,15 @@ PrefabInstance:
     - target: {fileID: 5884390090982165179, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
       propertyPath: meltObj
       value: 
-      objectReference: {fileID: 11400000, guid: 6655f5c952c65ba4a9bf441eb545a5ec, type: 2}
+      objectReference: {fileID: 11400000, guid: baf0f46b6e1c51e4c851966b6e258621, type: 2}
     - target: {fileID: 5884390090982165179, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
       propertyPath: isObjectSlot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5884390091061772060, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
+      propertyPath: meltObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 463dec79e0d868d4b8c23590462c31f6, type: 2}
     - target: {fileID: 5884390091061772060, guid: 1e10d070d902b05418fded4ddcdd3ca1, type: 3}
       propertyPath: isObjectSlot
       value: 1

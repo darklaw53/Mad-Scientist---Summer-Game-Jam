@@ -9,6 +9,9 @@ public class FormulaManager : Singleton<FormulaManager>
     public GameObject formulaRackOBJ;
     public GameObject ingredientRackOBJ;
     public GameObject objectRackOBJ;
+    public Formula failFormula;
+
+    bool done;
 
     public void GenerateFormula(Ingredient ing1, Ingredient ing2)
     {
@@ -20,7 +23,18 @@ public class FormulaManager : Singleton<FormulaManager>
                 objectRackOBJ.SetActive(false);
                 formulaRackOBJ.SetActive(true);
                 formulaRack.TakeItem(formula);
+                done = true;
+                break;
             }
+        }
+
+        //fail result
+        if (!done)
+        {
+            ingredientRackOBJ.SetActive(false);
+            objectRackOBJ.SetActive(false);
+            formulaRackOBJ.SetActive(true);
+            formulaRack.TakeItem(failFormula);
         }
     }
 }
