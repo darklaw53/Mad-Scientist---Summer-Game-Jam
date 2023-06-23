@@ -19,7 +19,7 @@ public class ShopItem : MonoBehaviour
     private void Awake()
     {
         image.sprite = ing.sprite;
-        price.text = "$" + ing.ingredientPrice + ".00";
+        price.text = "" + ing.ingredientPrice;
         ItemName.text = ing.name;
 
         rack = IngredientDragManager.Instance.ingredientRack;
@@ -27,7 +27,7 @@ public class ShopItem : MonoBehaviour
 
     public void BuyItem()
     {
-        if (ing.ingredientPrice < ScoreManager.Instance.score && !rack.full)
+        if (ing.ingredientPrice <= ScoreManager.Instance.score && !rack.full)
         {
             formulaRackOBJ.SetActive(false);
             ingredientRackOBJ.SetActive(true);

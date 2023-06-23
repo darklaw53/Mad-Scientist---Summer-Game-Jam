@@ -62,8 +62,11 @@ public class PosHandler : Singleton<PosHandler>
         }
     }
 
+    public GameObject soundEffect;
+
     IEnumerator MoveScreen(Vector3 targetPosition, bool moveChar)
     {
+        Instantiate(soundEffect);
         float timeElapsed = 0;
         Vector3 startPosition = cam.transform.position;
         Vector3 charStartPosition = character.transform.position;
@@ -78,7 +81,7 @@ public class PosHandler : Singleton<PosHandler>
             yield return null;
         }
         cam.transform.position = targetPosition;
-        character.transform.position = targetPosition + charCamDif;
+        if (moveChar) character.transform.position = targetPosition + charCamDif;
         if (isAtMix)
         {
             shop.SetActive(false);

@@ -41,7 +41,7 @@ public class InventorySlot : MonoBehaviour
     {
         formul = formula;
         image.sprite = formul.sprite;
-        image.color = new Vector4(image.color.r, image.color.g, image.color.b, 100);
+        image.color = new Color((formul.ingredient1.color.r + formul.ingredient2.color.r) / 2, (formul.ingredient1.color.g + formul.ingredient2.color.g) / 2, (formul.ingredient1.color.b + formul.ingredient2.color.b) / 2, (formul.ingredient1.color.a + formul.ingredient2.color.a) / 2);
     }
 
     public void RecieveItem(MeltObject mletObjj)

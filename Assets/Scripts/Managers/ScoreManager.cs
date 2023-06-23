@@ -10,6 +10,6 @@ public class ScoreManager : Singleton<ScoreManager>
 
     private void Update()
     {
-        text.text = "$" + score + ".00";
+        text.text = "" + score;
     }
 }

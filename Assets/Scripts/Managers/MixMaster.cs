@@ -133,6 +133,8 @@ public class MixMaster : Singleton<MixMaster>
         HoldAndShake.Instance.StopShaking();
     }
 
+    public GameObject soundEffect;
+
     void FinishMix()
     {
         FormulaManager.Instance.GenerateFormula(mixSlot1.ing, mixSlot2.ing);
@@ -143,6 +145,7 @@ public class MixMaster : Singleton<MixMaster>
         mixSlot1.ing = null;
         mixSlot2.ing = null;
 
+        Instantiate(soundEffect);
         HoldAndShake.Instance.StopShaking();
     }
 }

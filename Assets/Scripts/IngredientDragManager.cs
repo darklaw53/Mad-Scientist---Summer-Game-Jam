@@ -24,6 +24,8 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
     public GameObject ingredientRackOBJ;
     public GameObject objectRackOBJ;
 
+    public GameObject soundEffect;
+
     private void Update()
     {
         if (avatarIncarnated)
@@ -39,6 +41,7 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
 
                 if (hoverinOverSlot && mixingSlot != null && mixingSlot.ing == null && _ingredientInQuestion != null)
                 {
+                    Instantiate(soundEffect);
                     mixingSlot.RecieveItem(_ingredientInQuestion);
                     _ingredientInQuestion = null;
                     _inventorySlotInQuestion.ing = null;
@@ -122,6 +125,7 @@ public class IngredientDragManager : Singleton<IngredientDragManager>
 
         avatar = Instantiate(avatarTemplate, worldCanvas.transform);
         avatar.GetComponent<Image>().sprite = _formulaInQuestion.sprite;
+        avatar.GetComponent<Image>().color = new Color((formul.ingredient1.color.r + formul.ingredient2.color.r) / 2, (formul.ingredient1.color.g + formul.ingredient2.color.g) / 2, (formul.ingredient1.color.b + formul.ingredient2.color.b) / 2, (formul.ingredient1.color.a + formul.ingredient2.color.a) / 2);
         avatarIncarnated = true;
     }
 
