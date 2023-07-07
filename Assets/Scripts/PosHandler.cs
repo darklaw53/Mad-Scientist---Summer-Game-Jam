@@ -9,7 +9,7 @@ public class PosHandler : Singleton<PosHandler>
     public GameObject leftArrow, rightArrow, cam, character;
     public float duration = 1;
     Vector3 charCamDif;
-    bool isMoving;
+    public bool isMoving;
 
     public GameObject shop;
 

@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fcfc037d15e982a4e902a25ef1050bd4, type: 3}
     - target: {fileID: 3940661706260155395, guid: ce5c1c7356cab2a4fb081568133dfc8a, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4817051242720851242, guid: ce5c1c7356cab2a4fb081568133dfc8a, type: 3}
       propertyPath: ShapeModule.m_Scale.x

@@ -53,26 +53,29 @@ public class InventorySlot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (ing != null)
+        if (!PosHandler.Instance.isMoving)
         {
-            IngredientDragManager.Instance.DragItem(ing, this, isMixSlot);
+            if (ing != null)
+            {
+                IngredientDragManager.Instance.DragItem(ing, this, isMixSlot);
             
-            image.sprite = null;
-            image.color = new Vector4(image.color.r, image.color.g, image.color.b, 0);
-        }
-        else if (formul != null)
-        {
-            IngredientDragManager.Instance.DragItem(formul, this);
+                image.sprite = null;
+                image.color = new Vector4(image.color.r, image.color.g, image.color.b, 0);
+            }
+            else if (formul != null)
+            {
+                IngredientDragManager.Instance.DragItem(formul, this);
 
-            image.sprite = null;
-            image.color = new Vector4(image.color.r, image.color.g, image.color.b, 0);
-        }
-        else if (meltObj != null)
-        {
-            IngredientDragManager.Instance.DragItem(meltObj, this);
+                image.sprite = null;
+                image.color = new Vector4(image.color.r, image.color.g, image.color.b, 0);
+            }
+            else if (meltObj != null)
+            {
+                IngredientDragManager.Instance.DragItem(meltObj, this);
 
-            image.sprite = null;
-            image.color = new Vector4(image.color.r, image.color.g, image.color.b, 0);
+                image.sprite = null;
+                image.color = new Vector4(image.color.r, image.color.g, image.color.b, 0);
+            }
         }
     }
 

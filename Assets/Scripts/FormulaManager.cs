@@ -15,6 +15,7 @@ public class FormulaManager : Singleton<FormulaManager>
 
     public void GenerateFormula(Ingredient ing1, Ingredient ing2)
     {
+        done = false;
         foreach (Formula formula in listOfFormulas)
         {
             if ((formula.ingredient1 == ing1 && formula.ingredient2 == ing2) || (formula.ingredient1 == ing2 && formula.ingredient2 == ing1))
@@ -24,7 +25,6 @@ public class FormulaManager : Singleton<FormulaManager>
                 formulaRackOBJ.SetActive(true);
                 formulaRack.TakeItem(formula);
                 done = true;
-                break;
             }
         }
 

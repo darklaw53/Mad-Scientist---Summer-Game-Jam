@@ -82,10 +82,10 @@ public class MeltObjectScript : MonoBehaviour
         IngredientDragManager.Instance.objectRack.rack[slot.numberIndex + 1].lockIcon.SetActive(false);
         ScoreManager.Instance.score += meltObj.reward;
 
-        var p = Instantiate(meltPoof, transform.position, transform.rotation);
-        var b = p.GetComponent<ParticleSystem>().main;
-        p.transform.position = transform.position;
-        b.startColor = new Color((formul.ingredient1.color.r + formul.ingredient2.color.r) / 2, (formul.ingredient1.color.g + formul.ingredient2.color.g) / 2, (formul.ingredient1.color.b + formul.ingredient2.color.b) / 2, (formul.ingredient1.color.a + formul.ingredient2.color.a) / 2);
+        //var p = Instantiate(meltPoof, transform.position, transform.rotation);
+        //var b = p.GetComponent<ParticleSystem>().main;
+        //p.transform.position = transform.position;
+        //b.startColor = new Color((formul.ingredient1.color.r + formul.ingredient2.color.r) / 2, (formul.ingredient1.color.g + formul.ingredient2.color.g) / 2, (formul.ingredient1.color.b + formul.ingredient2.color.b) / 2, (formul.ingredient1.color.a + formul.ingredient2.color.a) / 2);
         Destroy(gameObject);
     }
 
